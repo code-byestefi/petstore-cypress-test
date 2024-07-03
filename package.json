@@ -1,0 +1,20 @@
+{
+  "name": "final-petstore",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "cypress": "^13.13.0"
+  },
+  "scripts": {
+    "cypress:open": "cypress open", 
+    "cypress:run": "cypress run",
+    "cypress:run:headed": "cypress run --headed"
+  }
+}
