@@ -10,5 +10,7 @@ sin preocuparse por la configuración global. Con solo hacer 'npm install' se pu
 - npm run cypress:run
 
 #### Ejecutar pruebas desde el terminal con navegador
-- npm run cypress:run --header
+- npm run cypress:run:headed
 
+#### Comando para eliminar reporte
+- npm run clean-report
