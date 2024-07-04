@@ -2,7 +2,6 @@ import { expect } from "chai";
 import { CommonMethods } from "../../services/common/common.methods";
 import { PetBodyBuilder } from "../../services/pet/pet-body.builder";
 import { PetMethods } from "../../services/pet/pet.methods";
-import { stat } from "fs";
 
 describe('Add pet', ()=> {
 
@@ -36,6 +35,6 @@ describe('Add pet', ()=> {
             expect(response.body.status).to.eql(status);
         })
 
-        //cy.wait(20000);
+        cy.wait(10000);
     });
 })

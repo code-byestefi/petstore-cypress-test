@@ -1,4 +1,6 @@
+import { CommonMethods } from "../common/common.methods";
 import { PetBody } from "./pet-body";
+import { PetMethods } from "./pet.methods";
 
 export class PetBodyBuilder {
     constructor() {
@@ -48,6 +50,19 @@ export class PetBodyBuilder {
     setStatus(status){
         this.body.status = status;
         return this;
+    }
+
+    // update pet data
+    setBodyWithRandomData(petId) {
+        this.body.id = petId;
+        this.body.category.id = PetMethods.generateCategoryId();
+        this.body.category.name = PetMethods.generateRandomCategory();
+        this.body.name = CommonMethods.generateName();
+        this.body.photoUrls = [`https://${CommonMethods.generateName()}.png`]
+        this.body.tags = [{id: 0, name: CommonMethods.generateName()}]
+        this.body.status = PetMethods.generateRandomStatus();
+
+        return this
     }
 
     build() {

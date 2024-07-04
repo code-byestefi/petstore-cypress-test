@@ -1,4 +1,8 @@
+import { expect } from "chai";
 import { CommonData } from "../common/common.data";
+import { PetBodyBuilder } from "./pet-body.builder";
+import exp from "constants";
+import { fail } from "assert";
 
 export class PetMethods {
     static addPet(body, headers = CommonData.header) {
@@ -9,6 +13,81 @@ export class PetMethods {
             body: body,
         })
     }
+
+    static updatePet(body, headers = CommonData.header) {
+        return cy.request({
+            method: 'PUT',
+            url: '/pet',
+            headers: headers,
+            body: body,
+        })
+
+    }
+
+    static getPetById(petId, headers = CommonData.header, failOnStatusCode = true ) {
+        return cy.request({
+            method: 'GET',
+            url:`/pet/${petId}`,
+            headers: headers,
+            failOnStatusCode: failOnStatusCode
+        })
+    }
+
+    static getPetByStatus(status, headers = CommonData.header) {
+        return cy.request({
+            method: 'GET',
+            url:`/pet/findByStatus?status=${status}`,
+            headers: headers,
+        })
+    }
+
+    static verifyStatusListStatus(petList, status) {
+        let differentStatusFound = false;
+        petList.forEach(pet=>{
+            if(pet.status!=status) {
+                differentStatusFound = true;
+            }
+        })
+        expect(differentStatusFound).to.eql(false);
+    }
+
+    static verifyPetIdIncludedInTheList(petList, petId) {
+        let petFound = false;
+
+        petList.forEach(pet => {
+            if(pet.id == petId) {
+                petFound = true;
+            }
+        })
+        expect(petFound).to.eql(true);
+    }
+
+    static createAvailablePet(petId){
+        const body = new PetBodyBuilder().setBodyWithRandomData().setStatus('available').setPetId(petId).build();
+        return this.addPet(body);
+
+    }
+
+    static createSoldPet(petId){
+        const body = new PetBodyBuilder().setBodyWithRandomData().setStatus('sold').setPetId(petId).build();
+        return this.addPet(body);
+
+    }
+
+    static createPendingPet(petId){
+        const body = new PetBodyBuilder().setBodyWithRandomData().setStatus('pending').setPetId(petId).build();
+        return this.addPet(body);
+
+    }
+
+    static deletePet(petId, apiKey) {
+        return cy.request({
+            method: 'DELETE',
+            url: `/pet/${petId}`,
+            headers: {'api_key': apiKey}
+        })
+    }
+
 
     static generatePetId() {
         return Math.floor((Math.random() * 3000) + 700);
@@ -37,6 +116,17 @@ export class PetMethods {
     
         const item = arr[randomIndex];
         return item;
+    }
+
+    static verifyPetIdNotIncludedInTheList(petList, petId) {
+        let petFound = false;
+
+        petList.forEach(pet => {
+            if(pet.id == petId) {
+                petFound = true
+            }
+        })
+        expect(petFound).to.eql(false)
     }
 
 
