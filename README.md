@@ -16,4 +16,4 @@ sin preocuparse por la configuración global. Con solo hacer 'npm install' se pu
 - npm run clean-report
 
 ### Pruebas de Regresión en Postman
-https://web.postman.co/workspace/My-Workspace~b15a559d-03e3-4eb2-8ac7-53d49295b811/documentation/34427189-738295ac-f458-4230-a89f-4c918388a575
+[https://web.postman.co/workspace/My-Workspace~b15a559d-03e3-4eb2-8ac7-53d49295b811/documentation/34427189-738295ac-f458-4230-a89f-4c918388a575](https://documenter.getpostman.com/view/34427189/2sA3JRaKsF)
