@@ -34,7 +34,5 @@ describe('Add pet', ()=> {
             expect(response.body.tags[0].name).to.eql(tags);
             expect(response.body.status).to.eql(status);
         })
-
-        cy.wait(10000);
     });
 })

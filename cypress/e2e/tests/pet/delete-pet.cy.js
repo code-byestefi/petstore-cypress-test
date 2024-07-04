@@ -2,7 +2,7 @@ import { expect } from "chai"
 import { PetBodyBuilder } from "../../services/pet/pet-body.builder"
 import { PetMethods } from "../../services/pet/pet.methods"
 
-Xdescribe('Delete Pet ', ()=> {
+describe('Delete Pet ', ()=> {
 
     it('Delete Pet - Happy path', () => {
         const petId = PetMethods.generatePetId()
